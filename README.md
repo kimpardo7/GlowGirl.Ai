@@ -4,17 +4,17 @@ GlowGirl.AI is a web application designed to help girls discover what truly make
 
 ## ✨ Glow Features ✨
 
-- **✨ MAKEUP REMOVER (Reviews)**: A review system for users to share honest feedback on quizzes, suggestions, and analysis results. Help our community glow better!
 - **💫 MAKEUP (Suggestions)**: A space for users to suggest new features, quizzes, or improvements. Help us add more glow to the app!
+- **✨ MAKEUP REMOVER (Reviews)**: A review system for users to share honest feedback on quizzes, suggestions, and analysis results. Help our community glow better!
 - **💎 SKINCARE (Issues)**: A system for reporting bugs or issues with the application. Keep everything smooth and healthy behind the scenes!
 
-## Style & Beauty Analysis Tools
+## 🌟 Style & Beauty Analysis Tools 🌟
 
-- **Seasonal Color Analysis Quiz**: Identify your correct seasonal color palette based on undertones and natural features.
-- **Silver vs. Gold Quiz**: Determine whether you look better in silver or gold jewelry.
-- **Makeup Style Quiz**: Match with the makeup style that best suits your features and personality.
-- **Hair Color Analysis**: Get suggestions for the most flattering hair colors.
-- **Hairstyle Analysis**: Find hairstyles that go best with your face shape and outfit.
+- **🎨 Seasonal Color Analysis Quiz**: Identify your correct seasonal color palette based on undertones and natural features.
+- **✨ Silver vs. Gold Quiz**: Determine whether you look better in silver or gold jewelry.
+- **💄 Makeup Style Quiz**: Match with the makeup style that best suits your features and personality.
+- **💇‍♀️ Hair Color Analysis**: Get suggestions for the most flattering hair colors.
+- **💁‍♀️ Hairstyle Analysis**: Find hairstyles that go best with your face shape and outfit.
 
 ## Getting Started
 
