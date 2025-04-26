@@ -2,11 +2,11 @@
 
 GlowGirl.AI is a web application designed to help girls discover what truly makes them glow. Through interactive quizzes and personalized analysis, users can find clothing, hairstyles, and makeup that suit their natural features.
 
-## ✨ Cutie Features ✨
+## ✨ Core Features ✨
 
-- **💁‍♀️ MAKEUP REMOVER (Reviews)**: A review system for users to share honest feedback on quizzes, suggestions, and analysis results.
-- **💄 MAKEUP (Suggestions & Feature Requests)**: A space for users to suggest new features, quizzes, or improvements.
-- **🧴 SKINCARE (Issues & Bug Reports)**: A system for reporting bugs or issues with the application.
+- **MAKEUP REMOVER (Reviews)**: A review system for users to share honest feedback on quizzes, suggestions, and analysis results.
+- **MAKEUP (Suggestions & Feature Requests)**: A space for users to suggest new features, quizzes, or improvements.
+- **SKINCARE (Issues & Bug Reports)**: A system for reporting bugs or issues with the application.
 
 ## Style & Beauty Analysis Tools
 
