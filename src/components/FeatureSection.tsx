@@ -1,22 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
 const FeatureSection = () => {
   const features = [
-    {
-      title: "MAKEUP REMOVER",
-      subtitle: "Reviews & Feedback",
-      description: "Share honest feedback on quizzes, suggestions, and analysis results. Help our community glow better!",
-      icon: "✨",
-      emoji: "💎",
-      color: "bg-gradient-to-br from-rose-50 to-pink-100",
-      borderColor: "border-rose-200",
-      iconColor: "text-rose-400",
-      hoverEffect: "hover:shadow-rose-200/50",
-      image: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=120&auto=format&fit=crop",
-      link: "/reviews"
-    },
     {
       title: "MAKEUP",
       subtitle: "Suggestions & Feature Requests",
@@ -27,8 +13,19 @@ const FeatureSection = () => {
       borderColor: "border-amber-200",
       iconColor: "text-amber-400",
       hoverEffect: "hover:shadow-amber-200/50",
-      image: "https://images.unsplash.com/photo-1631214548558-c93459a9b01e?q=80&w=120&auto=format&fit=crop",
       link: "/suggestions"
+    },
+    {
+      title: "MAKEUP REMOVER",
+      subtitle: "Reviews & Feedback",
+      description: "Share honest feedback on quizzes, suggestions, and analysis results. Help our community glow better!",
+      icon: "✨",
+      emoji: "💎",
+      color: "bg-gradient-to-br from-rose-50 to-pink-100",
+      borderColor: "border-rose-200",
+      iconColor: "text-rose-400",
+      hoverEffect: "hover:shadow-rose-200/50",
+      link: "/reviews"
     },
     {
       title: "SKINCARE",
@@ -40,7 +37,6 @@ const FeatureSection = () => {
       borderColor: "border-violet-200",
       iconColor: "text-violet-400",
       hoverEffect: "hover:shadow-violet-200/50",
-      image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=120&auto=format&fit=crop",
       link: "/issues"
     }
   ]
@@ -76,30 +72,19 @@ const FeatureSection = () => {
               className={`${feature.color} rounded-lg border ${feature.borderColor} p-8 transition-all duration-500 
                           shadow-sm ${feature.hoverEffect} hover:shadow-xl hover:-translate-y-1`}
             >
-              <div className="relative overflow-hidden rounded-full w-16 h-16 mb-8 mx-auto p-3 bg-white/70 backdrop-blur-sm border border-white shadow-sm">
+              <div className="relative overflow-hidden rounded-full w-16 h-16 mb-6 mx-auto p-3 bg-white/70 backdrop-blur-sm border border-white shadow-sm">
                 <div className={`text-2xl absolute inset-0 flex items-center justify-center ${feature.iconColor}`}>
                   {feature.icon}
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/30 to-white opacity-50 animate-pulse"></div>
               </div>
 
-              <h3 className="text-xl font-bold text-slate-700 mb-1 text-center">{feature.title}</h3>
-              <h4 className="text-lg text-slate-600 mb-4 text-center">{feature.subtitle}</h4>
-              
-              <div className="relative h-24 w-full mb-4 overflow-hidden rounded">
-                <Image
-                  src={feature.image}
-                  alt={feature.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{objectFit: 'cover'}}
-                  className="transition-transform duration-700 hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div className="absolute bottom-2 right-2 text-2xl">
-                  {feature.emoji}
-                </div>
+              <div className="flex items-center justify-center mb-5">
+                <h3 className="text-xl font-bold text-slate-700">{feature.title}</h3>
+                <span className="text-2xl ml-2">{feature.emoji}</span>
               </div>
+              
+              <h4 className="text-lg text-slate-600 mb-4 text-center">{feature.subtitle}</h4>
               
               <p className="text-gray-600 mb-6">{feature.description}</p>
               <Link 

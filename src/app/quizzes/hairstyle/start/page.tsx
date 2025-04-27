@@ -77,7 +77,16 @@ export default function HairstyleQuizStart() {
     } else {
       // Calculate result based on answers and redirect
       const result = calculateResult(newAnswers);
-      router.push(`/quizzes/hairstyle/results?style=${result}`);
+      
+      // Check if user has curly hair (from question 2)
+      const hairTexture = newAnswers[1];
+      let hairTextureParam = '';
+      
+      if (hairTexture?.includes('Curly') || hairTexture?.includes('Coily/Kinky')) {
+        hairTextureParam = '&hair_texture=curly';
+      }
+      
+      router.push(`/quizzes/hairstyle/results?style=${result}${hairTextureParam}`);
     }
   };
 

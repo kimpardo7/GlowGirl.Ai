@@ -7,66 +7,50 @@ import Link from 'next/link';
 export default function MakeupStyleQuizStart() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<string[]>([]);
+  const [answers, setAnswers] = useState<string[]>(Array(5).fill(''));
+  const [currentAnswer, setCurrentAnswer] = useState('');
 
   // Quiz questions
   const questions = [
     {
       question: "How would you describe your typical daily makeup routine?",
-      options: [
-        "Minimal or no makeup (natural)",
-        "Light coverage with a few products (casual)",
-        "Medium coverage with defined features (classic)",
-        "Full coverage with detailed techniques (glamorous)"
-      ]
+      placeholder: "Example: I typically use a light BB cream, mascara, and lip gloss daily..."
     },
     {
-      question: "Which facial feature do you like to emphasize the most?",
-      options: [
-        "Eyes",
-        "Lips",
-        "Skin/complexion",
-        "Cheeks/contour"
-      ]
+      question: "Which facial feature do you like to emphasize the most and why?",
+      placeholder: "Example: I love emphasizing my eyes because..."
     },
     {
-      question: "What's your personal style aesthetic?",
-      options: [
-        "Classic and timeless",
-        "Natural and effortless",
-        "Bold and dramatic",
-        "Trendy and experimental"
-      ]
+      question: "What's your personal style aesthetic and how does it influence your makeup choices?",
+      placeholder: "Example: My style is minimalist and classic, which means I tend to..."
     },
     {
-      question: "How much time are you willing to spend on your makeup routine?",
-      options: [
-        "Under 5 minutes",
-        "5-10 minutes",
-        "10-20 minutes",
-        "20+ minutes"
-      ]
+      question: "How much time are you willing to spend on your makeup routine, and what factors influence this?",
+      placeholder: "Example: I usually spend about 10 minutes because..."
     },
     {
-      question: "Which makeup look would you choose for an everyday occasion?",
-      options: [
-        "Clean skin, mascara, and tinted lip balm",
-        "Light foundation, subtle eye, and natural lip",
-        "Medium coverage, defined eye, and coordinated lip",
-        "Full coverage, smokey eye or bold lip, and contour"
-      ]
+      question: "Describe your ideal everyday makeup look in detail.",
+      placeholder: "Example: My ideal everyday look includes tinted moisturizer, subtle blush..."
     }
   ];
 
-  // Handle selecting an answer
-  const handleAnswerSelect = (answer: string) => {
+  // Handle text input change
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setCurrentAnswer(e.target.value);
+  };
+
+  // Handle submitting an answer
+  const handleSubmitAnswer = () => {
+    if (currentAnswer.trim() === '') return;
+    
     const newAnswers = [...answers];
-    newAnswers[currentQuestion] = answer;
+    newAnswers[currentQuestion] = currentAnswer;
     setAnswers(newAnswers);
     
     // Move to next question or results page if at the end
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+      setCurrentAnswer('');
     } else {
       // Calculate result based on answers and redirect
       const result = calculateResult(newAnswers);
@@ -84,51 +68,60 @@ export default function MakeupStyleQuizStart() {
       trendy: 0
     };
     
-    // Question 1: Makeup routine
-    if (allAnswers[0]?.includes("Minimal")) styles.natural += 2;
-    else if (allAnswers[0]?.includes("Light")) styles.natural += 1;
-    else if (allAnswers[0]?.includes("Medium")) styles.classic += 1;
-    else if (allAnswers[0]?.includes("Full")) styles.glamorous += 2;
+    // Keywords to look for in responses
+    const keywords = {
+      natural: ['minimal', 'natural', 'light', 'simple', 'fresh', 'clean', 'barely-there', 'no-makeup', 'effortless', 'quick', 'easy', 'subtle', 'basic'],
+      classic: ['polished', 'timeless', 'elegant', 'sophisticated', 'professional', 'clean', 'refined', 'neutral', 'balanced', 'work', 'office', 'traditional'],
+      glamorous: ['full coverage', 'dramatic', 'glam', 'bold', 'statement', 'contour', 'highlight', 'evening', 'special occasion', 'flawless', 'perfect', 'detailed'],
+      trendy: ['colorful', 'creative', 'experimental', 'unique', 'artistic', 'fun', 'playful', 'trendy', 'modern', 'graphic', 'bright', 'vibrant', 'edgy', 'instagram']
+    };
     
-    // Question 2: Featured facial feature
-    if (allAnswers[1] === "Eyes") {
-      styles.glamorous += 1;
-      styles.trendy += 1;
-    } else if (allAnswers[1] === "Lips") {
-      styles.classic += 1;
-      styles.trendy += 1;
-    } else if (allAnswers[1] === "Skin/complexion") {
-      styles.natural += 1;
-    } else if (allAnswers[1] === "Cheeks/contour") {
-      styles.glamorous += 1;
-    }
-    
-    // Question 3: Personal style
-    if (allAnswers[2]?.includes("Classic")) styles.classic += 2;
-    else if (allAnswers[2]?.includes("Natural")) styles.natural += 2;
-    else if (allAnswers[2]?.includes("Bold")) styles.glamorous += 2;
-    else if (allAnswers[2]?.includes("Trendy")) styles.trendy += 2;
-    
-    // Question 4: Time spent
-    if (allAnswers[3]?.includes("Under 5")) styles.natural += 2;
-    else if (allAnswers[3]?.includes("5-10")) {
-      styles.natural += 1;
-      styles.classic += 1;
-    }
-    else if (allAnswers[3]?.includes("10-20")) styles.classic += 2;
-    else if (allAnswers[3]?.includes("20+")) {
-      styles.glamorous += 1;
-      styles.trendy += 1;
-    }
-    
-    // Question 5: Everyday look
-    if (allAnswers[4]?.includes("Clean skin")) styles.natural += 2;
-    else if (allAnswers[4]?.includes("Light foundation")) styles.classic += 1;
-    else if (allAnswers[4]?.includes("Medium coverage")) styles.classic += 2;
-    else if (allAnswers[4]?.includes("Full coverage")) {
-      styles.glamorous += 1;
-      styles.trendy += 1;
-    }
+    // Analyze each answer for keywords
+    allAnswers.forEach(answer => {
+      const lowerAnswer = answer.toLowerCase();
+      
+      // Count keyword matches for each style
+      Object.keys(keywords).forEach(style => {
+        keywords[style as keyof typeof keywords].forEach(keyword => {
+          if (lowerAnswer.includes(keyword)) {
+            styles[style as keyof typeof styles] += 1;
+          }
+        });
+      });
+      
+      // Special cases based on time mentioned (Question 4)
+      if (lowerAnswer.includes('5 minute') || lowerAnswer.includes('quick') || lowerAnswer.includes('fast')) {
+        styles.natural += 2;
+      } else if (lowerAnswer.includes('hour') || lowerAnswer.includes('30 minute') || lowerAnswer.includes('detailed')) {
+        styles.glamorous += 2;
+        styles.trendy += 1;
+      }
+      
+      // Special cases for features emphasized (Question 2)
+      if (lowerAnswer.includes('eye')) {
+        // Eye emphasis could be any style depending on how it's done
+        if (lowerAnswer.includes('dramatic') || lowerAnswer.includes('smokey')) {
+          styles.glamorous += 2;
+        } else if (lowerAnswer.includes('colorful') || lowerAnswer.includes('graphic')) {
+          styles.trendy += 2;
+        } else if (lowerAnswer.includes('subtle') || lowerAnswer.includes('natural')) {
+          styles.natural += 1;
+          styles.classic += 1;
+        }
+      } else if (lowerAnswer.includes('lip')) {
+        if (lowerAnswer.includes('bold') || lowerAnswer.includes('red')) {
+          styles.classic += 1;
+          styles.glamorous += 1;
+        } else if (lowerAnswer.includes('unusual') || lowerAnswer.includes('bright')) {
+          styles.trendy += 2;
+        } else if (lowerAnswer.includes('nude') || lowerAnswer.includes('natural')) {
+          styles.natural += 1;
+          styles.classic += 1;
+        }
+      } else if (lowerAnswer.includes('skin') || lowerAnswer.includes('complexion')) {
+        styles.natural += 2;
+      }
+    });
     
     // Find the style with the highest score
     let maxStyle = "natural";
@@ -153,6 +146,15 @@ export default function MakeupStyleQuizStart() {
   const handleBack = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
+      setCurrentAnswer(answers[currentQuestion - 1] || '');
+    }
+  };
+
+  // Handle pressing Enter to submit
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmitAnswer();
     }
   };
 
@@ -173,15 +175,25 @@ export default function MakeupStyleQuizStart() {
         <h2 className="text-xl font-semibold mb-4">{questions[currentQuestion].question}</h2>
         
         <div className="space-y-3">
-          {questions[currentQuestion].options.map((option, index) => (
-            <button
-              key={index}
-              className="w-full py-3 px-4 text-left border rounded-md hover:bg-gray-50 transition duration-150"
-              onClick={() => handleAnswerSelect(option)}
-            >
-              {option}
-            </button>
-          ))}
+          <textarea
+            className="w-full py-3 px-4 border rounded-md min-h-[120px] focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder={questions[currentQuestion].placeholder}
+            value={currentAnswer}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+          />
+          
+          <button 
+            onClick={handleSubmitAnswer}
+            disabled={currentAnswer.trim() === ''}
+            className={`w-full py-3 px-4 rounded-md text-white font-medium transition ${
+              currentAnswer.trim() === '' 
+                ? 'bg-gray-400 cursor-not-allowed' 
+                : 'bg-blue-600 hover:bg-blue-700'
+            }`}
+          >
+            {currentQuestion < questions.length - 1 ? 'Next Question' : 'See Results'}
+          </button>
         </div>
         
         {currentQuestion > 0 && (
