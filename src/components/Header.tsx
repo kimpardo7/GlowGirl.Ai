@@ -17,14 +17,20 @@ const Header = () => {
           <Link href="/quizzes" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
             Quizzes
           </Link>
+          <Link href="/chat" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
+            Chat with AI
+          </Link>
+          <Link href="/guides/glam-makeup" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
+            Glam Guide
+          </Link>
           <Link href="/reviews" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
-            Reviews
+            Makeup Remover
           </Link>
           <Link href="/suggestions" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
-            Suggestions
+            Makeup
           </Link>
           <Link href="/issues" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
-            Report Issues
+            Skincare
           </Link>
         </nav>
         

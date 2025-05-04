@@ -663,6 +663,97 @@ export default function HairstyleResults() {
           }
         ]
       }
+    },
+    y2k: {
+      title: "Y2K Inspired Styles",
+      description: "Channel the iconic late 90s and early 2000s with these fun, nostalgic hairstyles that perfectly capture the Y2K aesthetic. These playful and bold styles are making a major comeback!",
+      best_variations: [
+        {
+          text: "Space Buns with Face-Framing Pieces (iconic Y2K double bun style)",
+          pinterestLink: "https://www.pinterest.com/search/pins/?q=y2k%20space%20buns%20hairstyle"
+        },
+        {
+          text: "Butterfly Clips and Spiky Buns (classic Y2K accessorized style)",
+          pinterestLink: "https://www.pinterest.com/search/pins/?q=y2k%20butterfly%20clips%20hairstyle"
+        },
+        {
+          text: "Zigzag Part with Mini Braids (edgy Y2K parting style)",
+          pinterestLink: "https://www.pinterest.com/search/pins/?q=y2k%20zigzag%20part%20hairstyle"
+        },
+        {
+          text: "Crimped Hair with Colorful Extensions (bold Y2K texture)",
+          pinterestLink: "https://www.pinterest.com/search/pins/?q=y2k%20crimped%20hair%20style"
+        },
+        {
+          text: "High Pigtails with Scrunchies (playful Y2K updo)",
+          pinterestLink: "https://www.pinterest.com/search/pins/?q=y2k%20pigtails%20hairstyle"
+        },
+        {
+          text: "Flipped Out Ends with Bandana (retro Y2K flip style)",
+          pinterestLink: "https://www.pinterest.com/search/pins/?q=y2k%20flipped%20ends%20hairstyle"
+        }
+      ],
+      styling_tips: [
+        "Use a zigzag parting comb for precise Y2K-inspired parts",
+        "Layer multiple butterfly clips for authentic Y2K style",
+        "Apply hair glitter gel for extra Y2K sparkle",
+        "Create face-framing pieces with a flat iron",
+        "Use a crimping iron for textured sections",
+        "Mix and match colorful hair accessories",
+        "Try mini braids throughout for added detail",
+        "Use strong-hold hairspray to maintain spiky buns",
+        "Experiment with temporary colored hair extensions",
+        "Master the art of perfectly flipped ends"
+      ],
+      products: {
+        budget: [
+          {
+            name: "Conair Double Ceramic Crimping Iron",
+            price: "$19.99",
+            benefits: "Creates authentic Y2K crimped texture, dual voltage for travel, easy to use",
+            cons: "Basic model may not have temperature control, can damage hair if overused",
+            link: "https://www.ulta.com/p/double-ceramic-crimping-iron-xlsImpprod4320083"
+          },
+          {
+            name: "Scunci Butterfly Clips Set",
+            price: "$5.99",
+            benefits: "Authentic Y2K accessories, various colors, affordable",
+            cons: "May not be as durable as premium options, limited color selection",
+            link: "https://www.target.com/p/scunci-butterfly-clips-12ct/-/A-75570945"
+          },
+          {
+            name: "Got2b Glued Blasting Freeze Spray",
+            price: "$8.99",
+            benefits: "Ultra-strong hold for spiky styles, long-lasting, affordable",
+            cons: "Can be difficult to wash out, may feel crunchy",
+            link: "https://www.ulta.com/p/glued-blasting-freeze-spray-xlsImpprod3560127"
+          }
+        ],
+        premium: [
+          {
+            name: "Amika High Tide Deep Waver",
+            price: "$120.00",
+            benefits: "Creates perfect Y2K waves, multiple heat settings, professional quality",
+            cons: "Expensive, requires practice for best results",
+            link: "https://www.sephora.com/product/high-tide-deep-waver-P456397"
+          },
+          {
+            name: "IGK Preparty Hair Strobing Glitter Spray",
+            price: "$32.00",
+            benefits: "Professional-grade glitter effect, doesn't dull hair shine, easy application",
+            cons: "Premium price point, may transfer to clothing",
+            link: "https://www.sephora.com/product/preparty-hair-strobing-glitter-spray-P456397"
+          },
+          {
+            name: "Color Wow Extra Mist-ical Shine Spray",
+            price: "$29.00",
+            benefits: "Creates glass-like shine for Y2K looks, doesn't weigh hair down",
+            cons: "Expensive, may need frequent reapplication",
+            link: "https://www.sephora.com/product/extra-mist-ical-shine-spray-P434621"
+          }
+        ]
+      },
+      celebrity_inspiration: ["Bella Hadid", "Dua Lipa", "Olivia Rodrigo", "Madison Beer", "Devon Lee Carlson"]
     }
   };
 
@@ -717,6 +808,7 @@ export default function HairstyleResults() {
           styleParam === 'long_layers' ? 'bg-gradient-to-r from-amber-100 to-yellow-100' :
           styleParam === 'curly_natural' ? 'bg-gradient-to-r from-green-100 to-teal-100' :
           styleParam === 'updo' ? 'bg-gradient-to-r from-purple-100 to-indigo-100' :
+          styleParam === 'y2k' ? 'bg-gradient-to-r from-pink-100 to-purple-100' :
           'bg-gradient-to-r from-gray-100 to-blue-100'
         }`}>
           <h2 className="text-2xl font-bold mb-2">{result.title}</h2>
@@ -935,7 +1027,7 @@ export default function HairstyleResults() {
                       <li key={index} className="text-gray-700">{celeb}</li>
                     ))}
                   </ul>
-                </div>
+              </div>
                 
                 {/* Celebrity social links */}
                 <div className="bg-white p-4 rounded-md border border-gray-200 shadow-sm">
@@ -1044,9 +1136,97 @@ export default function HairstyleResults() {
                     )}
                     {styleParam === 'curly_natural' && (
                       <>
+                        <li className="flex flex-col space-y-2">
+                          <span className="font-semibold text-gray-800">Zendaya:</span>
+                          <div className="flex flex-wrap gap-2">
+                            <a href="https://www.instagram.com/zendaya/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline flex items-center bg-blue-50 px-2 py-1 rounded">
+                              <FaInstagram className="w-4 h-4 mr-1" />
+                              Instagram
+                            </a>
+                            <a href="https://www.youtube.com/@Zendaya" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline flex items-center bg-red-50 px-2 py-1 rounded">
+                              <FaYoutube className="w-4 h-4 mr-1" />
+                              YouTube
+                            </a>
+            </div>
+                        </li>
+                        <li className="flex flex-col space-y-2">
+                          <span className="font-semibold text-gray-800">Yara Shahidi:</span>
+                          <div className="flex flex-wrap gap-2">
+                            <a href="https://www.instagram.com/yarashahidi/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline flex items-center bg-blue-50 px-2 py-1 rounded">
+                              <FaInstagram className="w-4 h-4 mr-1" />
+                              Instagram
+                            </a>
+                            <a href="https://www.youtube.com/@YaraShahidi" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline flex items-center bg-red-50 px-2 py-1 rounded">
+                              <FaYoutube className="w-4 h-4 mr-1" />
+                              YouTube
+                            </a>
+                          </div>
+                        </li>
+                        <li className="flex flex-col space-y-2">
+                          <span className="font-semibold text-gray-800">Shay Mitchell:</span>
+                          <div className="flex flex-wrap gap-2">
+                            <a href="https://www.instagram.com/shaymitchell/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline flex items-center bg-blue-50 px-2 py-1 rounded">
+                              <FaInstagram className="w-4 h-4 mr-1" />
+                              Instagram
+                            </a>
+                            <a href="https://www.youtube.com/@shaymitchell" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline flex items-center bg-red-50 px-2 py-1 rounded">
+                              <FaYoutube className="w-4 h-4 mr-1" />
+                              YouTube
+                            </a>
+                          </div>
+                        </li>
+                        <li className="flex flex-col space-y-2">
+                          <span className="font-semibold text-gray-800">Sandra Oh:</span>
+                          <div className="flex flex-wrap gap-2">
+                            <a href="https://www.instagram.com/iamsandraohinsta/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline flex items-center bg-blue-50 px-2 py-1 rounded">
+                              <FaInstagram className="w-4 h-4 mr-1" />
+                              Instagram
+                            </a>
+                            <a href="https://www.youtube.com/@SandraOhOfficial" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline flex items-center bg-red-50 px-2 py-1 rounded">
+                              <FaYoutube className="w-4 h-4 mr-1" />
+                              YouTube
+                            </a>
+                          </div>
+                        </li>
+                        <li className="flex flex-col space-y-2">
+                          <span className="font-semibold text-gray-800">Tracee Ellis Ross:</span>
+                          <div className="flex flex-wrap gap-2">
+                            <a href="https://www.instagram.com/traceeellisross/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline flex items-center bg-blue-50 px-2 py-1 rounded">
+                              <FaInstagram className="w-4 h-4 mr-1" />
+                              Instagram
+                            </a>
+                            <a href="https://www.youtube.com/c/TraceeEllisRoss" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline flex items-center bg-red-50 px-2 py-1 rounded">
+                              <FaYoutube className="w-4 h-4 mr-1" />
+                              YouTube
+                            </a>
+                            <a href="https://patternbeauty.com/" target="_blank" rel="noopener noreferrer" className="text-purple-600 hover:text-purple-800 hover:underline flex items-center bg-purple-50 px-2 py-1 rounded">
+                              <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M21.435 2.582a1.933 1.933 0 00-1.93-.503L3.408 6.759a1.92 1.92 0 00-1.384 1.522c-.142.75.355 1.704 1.003 2.102l5.033 3.094a1.304 1.304 0 001.61-.194l5.763-5.799a.734.734 0 011.06 0c.29.292.29.765 0 1.067l-5.773 5.8c-.428.43-.508 1.1-.193 1.62l3.075 5.083c.36.604.98.946 1.66.946.08 0 .17 0 .251-.01.78-.1 1.4-.634 1.63-1.39l4.773-16.075c.21-.685.02-1.43-.48-1.943z"/>
+                              </svg>
+                              Pattern Beauty
+                            </a>
+                          </div>
+                        </li>
+                        <li className="flex flex-col space-y-2">
+                          <span className="font-semibold text-gray-800">Viola Davis:</span>
+                          <div className="flex flex-wrap gap-2">
+                            <a href="https://www.instagram.com/violadavis/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 hover:underline flex items-center bg-blue-50 px-2 py-1 rounded">
+                              <FaInstagram className="w-4 h-4 mr-1" />
+                              Instagram
+                            </a>
+                            <a href="https://www.youtube.com/@ViolaDavis" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-800 hover:underline flex items-center bg-red-50 px-2 py-1 rounded">
+                              <FaYoutube className="w-4 h-4 mr-1" />
+                              YouTube
+                            </a>
+                          </div>
+                        </li>
+                      </>
+                    )}
+                    {styleParam === 'updo' && (
+                      <>
                         <li className="flex items-center">
-                          <span className="font-medium mr-2">Zendaya:</span>
-                          <a href="https://www.instagram.com/zendaya/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                          <span className="font-medium mr-2">Blake Lively:</span>
+                          <a href="https://www.instagram.com/blakelively/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
@@ -1054,8 +1234,8 @@ export default function HairstyleResults() {
                           </a>
                         </li>
                         <li className="flex items-center">
-                          <span className="font-medium mr-2">Yara Shahidi:</span>
-                          <a href="https://www.instagram.com/yarashahidi/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                          <span className="font-medium mr-2">Jennifer Lopez:</span>
+                          <a href="https://www.instagram.com/jenniferlopez/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
@@ -1063,27 +1243,30 @@ export default function HairstyleResults() {
                           </a>
                         </li>
                         <li className="flex items-center">
-                          <span className="font-medium mr-2">Tracee Ellis Ross:</span>
-                          <a href="https://www.instagram.com/traceeellisross/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                          <span className="font-medium mr-2">Lupita Nyong'o:</span>
+                          <a href="https://www.instagram.com/lupitanyongo/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                             Instagram
                           </a>
-                          <a href="https://www.youtube.com/c/TraceeEllisRoss" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline flex items-center">
+                        </li>
+                        <li className="flex items-center">
+                          <span className="font-medium mr-2">Ariana Grande:</span>
+                          <a href="https://www.instagram.com/arianagrande/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
-                            YouTube
+                            Instagram
                           </a>
                         </li>
                       </>
                     )}
-                    {styleParam === 'curtain_bangs' && (
+                    {styleParam === 'textured_crop' && (
                       <>
                         <li className="flex items-center">
-                          <span className="font-medium mr-2">Dakota Johnson:</span>
-                          <a href="https://www.instagram.com/dakotajohnson/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                          <span className="font-medium mr-2">Scarlett Johansson:</span>
+                          <a href="https://www.instagram.com/scarlettjohansson/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
@@ -1091,39 +1274,85 @@ export default function HairstyleResults() {
                           </a>
                         </li>
                         <li className="flex items-center">
-                          <span className="font-medium mr-2">Selena Gomez:</span>
-                          <a href="https://www.instagram.com/selenagomez/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                          <span className="font-medium mr-2">Ruby Rose:</span>
+                          <a href="https://www.instagram.com/rubyrose/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                             Instagram
-                          </a>
-                          <a href="https://www.youtube.com/user/SelenaGomezVEVO" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline flex items-center">
-                            <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                            </svg>
-                            YouTube
                           </a>
                         </li>
                         <li className="flex items-center">
-                          <span className="font-medium mr-2">Matilda Djerf:</span>
-                          <a href="https://www.instagram.com/matildadjerf/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                          <span className="font-medium mr-2">Katy Perry:</span>
+                          <a href="https://www.instagram.com/katyperry/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
                             Instagram
                           </a>
-                          <a href="https://www.youtube.com/c/MatildaDjerf" target="_blank" rel="noopener noreferrer" className="text-red-600 hover:underline flex items-center">
+                        </li>
+                        <li className="flex items-center">
+                          <span className="font-medium mr-2">Charlize Theron:</span>
+                          <a href="https://www.instagram.com/charlizeafrica/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
                             <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                             </svg>
-                            YouTube
+                            Instagram
+                          </a>
+                        </li>
+                      </>
+                    )}
+                    {styleParam === 'y2k' && (
+                      <>
+                        <li className="flex items-center">
+                          <span className="font-medium mr-2">Bella Hadid:</span>
+                          <a href="https://www.instagram.com/bellahadid/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                            <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                            Instagram
+                          </a>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="font-medium mr-2">Dua Lipa:</span>
+                          <a href="https://www.instagram.com/dualipa/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                            <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                            Instagram
+                          </a>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="font-medium mr-2">Olivia Rodrigo:</span>
+                          <a href="https://www.instagram.com/oliviarodrigo/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                            <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                            Instagram
+                          </a>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="font-medium mr-2">Madison Beer:</span>
+                          <a href="https://www.instagram.com/madisonbeer/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                            <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                            Instagram
+                          </a>
+                        </li>
+                        <li className="flex items-center">
+                          <span className="font-medium mr-2">Devon Lee Carlson:</span>
+                          <a href="https://www.instagram.com/devonleecarlson/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline mr-3 flex items-center">
+                            <svg className="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor">
+                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                            Instagram
                           </a>
                         </li>
                       </>
                     )}
                   </ul>
-                </div>
+          </div>
               </div>
             </div>
           )}
