@@ -23,9 +23,9 @@ export interface StyleContext {
 interface OutfitRecommendations {
   tops: string[];
   bottoms: string[];
-  accessories: string[];
   shoes: string[];
   layers: string[];
+  accessories: string[];
   tips: string[];
   inspiration: string;
 }
@@ -55,22 +55,7 @@ interface StyleRecommendations {
 
 interface HairRecommendations {
   styles: string[];
-  products: {
-    budget: Array<{
-      name: string;
-      price: string;
-      benefits: string;
-      cons: string;
-      link: string;
-    }>;
-    premium: Array<{
-      name: string;
-      price: string;
-      benefits: string;
-      cons: string;
-      link: string;
-    }>;
-  };
+  products: string[];
   accessories: string[];
   tips: string[];
   inspiration: string;
@@ -250,12 +235,49 @@ export class AIService {
     
     // Determine aesthetic from message or preferences
     let aesthetic = 'classic';
-    if (lowerMessage.includes('y2k') || lowerMessage.includes('2000s') || lowerMessage.includes('retro')) {
+    if (lowerMessage.includes('cottagecore')) {
+      return `Hey there! 🌸 Let me help you create some dreamy cottagecore hairstyles!\n\n` +
+        `### Cottagecore Hairstyle Ideas:\n` +
+        `• Romantic Braided Crown\n` +
+        `• Loose Waves with Floral Accents\n` +
+        `• Soft Milkmaid Braids\n` +
+        `• Vintage-Inspired Pin Curls\n` +
+        `• Twisted Half-Up Style\n` +
+        `• Braided Side Bun with Baby's Breath\n` +
+        `• Natural Curls with Flower Crown\n` +
+        `• Loose French Braid with Ribbon\n\n` +
+        `### Must-Have Hair Accessories:\n` +
+        `• Fresh or Silk Flowers\n` +
+        `• Delicate Hair Ribbons\n` +
+        `• Pearl Hair Pins\n` +
+        `• Vintage Hair Combs\n` +
+        `• Lace Hair Bows\n` +
+        `• Floral Hair Clips\n` +
+        `• Woven Headbands\n\n` +
+        `### Styling Products You'll Need:\n` +
+        `• Light Hold Mousse\n` +
+        `• Sea Salt Spray\n` +
+        `• Heat Protectant\n` +
+        `• Shine Serum\n` +
+        `• Soft Hold Hairspray\n\n` +
+        `### Where to Shop:\n` +
+        `• [Shop Hair Accessories at Free People](https://www.freepeople.com/accessories-hair/)\n` +
+        `• [Shop Vintage Hair Pieces on Etsy](https://www.etsy.com/market/vintage_hair_accessories)\n` +
+        `• [Shop Hair Products at Ulta](https://www.ulta.com/hair/)\n\n` +
+        `### Styling Tips:\n` +
+        `✨ Start with day-old hair for better hold\n` +
+        `✨ Use fresh flowers in the morning for special occasions\n` +
+        `✨ Embrace natural texture and loose pieces\n` +
+        `✨ Practice basic braiding techniques\n` +
+        `✨ Keep bobby pins in similar color to your hair\n\n` +
+        `### Get More Inspiration:\n` +
+        `• [Pinterest Cottagecore Hair](https://www.pinterest.com/search/pins/?q=cottagecore%20hairstyles)\n` +
+        `• [Instagram Cottagecore Hair](https://www.instagram.com/explore/tags/cottagecorehair/)\n\n` +
+        `💡 **Pro Tip:** The key to cottagecore hairstyles is embracing a soft, romantic look. Don't worry if some pieces fall loose - it adds to the whimsical charm!`;
+    } else if (lowerMessage.includes('y2k') || lowerMessage.includes('2000s') || lowerMessage.includes('retro')) {
       aesthetic = 'y2k';
     } else if (lowerMessage.includes('baddie')) {
       aesthetic = 'baddie';
-    } else if (lowerMessage.includes('cottagecore')) {
-      aesthetic = 'cottagecore';
     } else if (lowerMessage.includes('dark academia')) {
       aesthetic = 'dark-academia';
     } else if (lowerMessage.includes('minimalist')) {
@@ -346,12 +368,7 @@ export class AIService {
     };
 
     // Get aesthetic-specific hairstyles
-    const getHairstylesByAesthetic = (aesthetic: string): {
-      styles: string[];
-      products: string[];
-      inspiration: string;
-      tips: string[];
-    } => {
+    const getHairstylesByAesthetic = (aesthetic: string): HairRecommendations => {
       switch(aesthetic.toLowerCase()) {
         case 'baddie':
           return {
@@ -369,13 +386,20 @@ export class AIService {
               'Strong Hold Gel',
               'Quality Hair Extensions'
             ],
-            inspiration: 'baddie%20hairstyles',
+            accessories: [
+              'Silk Scrunchies',
+              'Edge Brush',
+              'Hair Ties',
+              'Bobby Pins',
+              'Hair Clips'
+            ],
             tips: [
               'Master your baby hairs',
               'Invest in quality extensions',
               'Perfect the sleek look',
               'Learn to do intricate braids'
-            ]
+            ],
+            inspiration: 'baddie%20hairstyles'
           };
         case 'cottagecore':
           return {
@@ -388,26 +412,33 @@ export class AIService {
             ],
             products: [
               'Sea Salt Spray',
-              'Floral Hair Accessories',
               'Light Hold Cream',
               'Natural Bristle Brush',
-              'Silk Hair Ribbons'
+              'Heat Protectant',
+              'Shine Serum'
             ],
-            inspiration: 'cottagecore%20hair',
+            accessories: [
+              'Fresh or Silk Flowers',
+              'Delicate Hair Ribbons',
+              'Pearl Hair Pins',
+              'Vintage Hair Combs',
+              'Lace Hair Bows'
+            ],
             tips: [
               'Master different braid styles',
               'Use natural styling methods',
               'Incorporate flowers and ribbons',
               'Embrace your natural texture'
-            ]
+            ],
+            inspiration: 'cottagecore%20hair'
           };
         case 'y2k':
           return {
             styles: [
+              'Space Buns with Face-Framing Pieces',
               'Butterfly Clips Galore',
               'Spiky Buns',
               'Crimped Sections',
-              'Face-Framing Pieces',
               'Colorful Hair Extensions'
             ],
             products: [
@@ -417,13 +448,20 @@ export class AIService {
               'Glitter Hair Gel',
               'Fun Hair Accessories'
             ],
-            inspiration: 'y2k%20hairstyles',
+            accessories: [
+              'Butterfly Hair Clips',
+              'Colorful Snap Clips',
+              'Scrunchies',
+              'Mini Claw Clips',
+              'Hair Gems'
+            ],
             tips: [
               'Mix different hair accessories',
               'Don\'t be afraid of color',
               'Try fun updos',
               'Experiment with temporary dyes'
-            ]
+            ],
+            inspiration: 'y2k%20hairstyles'
           };
         case 'dark-academia':
           return {
@@ -497,49 +535,34 @@ export class AIService {
           };
         default:
           return {
-            tops: [
-              'Classic White Tee',
-              'Fitted Tank Top',
-              'Button-Down Shirt',
-              'Knit Sweater',
-              'Basic Crop Top'
+            styles: [
+              'Classic Bob',
+              'Long Layers',
+              'Side-Swept Bangs',
+              'Sleek Straight',
+              'Natural Waves'
             ],
-            bottoms: [
-              'High-Waisted Jeans',
-              'Black Leggings',
-              'Midi Skirt',
-              'Tailored Pants',
-              'Denim Shorts'
+            products: [
+              'Heat Protectant',
+              'Volumizing Mousse',
+              'Light Hold Hairspray',
+              'Shine Serum',
+              'Dry Shampoo'
             ],
             accessories: [
-              'Versatile Tote Bag',
-              'Simple Necklace',
-              'Classic Watch',
-              'Leather Belt',
-              'Stud Earrings'
-            ],
-            shoes: [
-              'White Sneakers',
-              'Ankle Boots',
-              'Ballet Flats',
-              'Sandals',
-              'Loafers'
-            ],
-            layers: [
-              'Denim Jacket',
-              'Cardigan',
-              'Blazer',
-              'Light Sweater',
-              'Trench Coat'
+              'Classic Hair Clips',
+              'Simple Hair Ties',
+              'Basic Bobby Pins',
+              'Neutral Headbands',
+              'Minimal Scrunchies'
             ],
             tips: [
-              'Mix and match basics',
-              'Layer strategically',
-              'Choose versatile pieces',
-              'Focus on fit',
-              'Keep it balanced'
+              'Focus on healthy hair care',
+              'Keep styles polished',
+              'Use heat protection',
+              'Regular trims'
             ],
-            inspiration: 'classic%20outfit%20ideas'
+            inspiration: 'classic%20hairstyles'
           };
       }
     };
@@ -720,21 +743,31 @@ export class AIService {
 
     return `Hey girly! 👗 Let me help you create the perfect ${aesthetic} look!\n\n` +
       `Here's a curated ${aesthetic} outfit guide with shopping links:\n\n` +
-      `### Style Options:\n` +
-      outfitRecs.styles.map(style => `• ${style}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/)\n\n` +
-      `### Must-Have Products:\n` +
-      outfitRecs.products.map(product => `• ${product}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/)\n\n` +
+      `### Top Options:\n` +
+      outfitRecs.tops.map(top => `• ${top}\n`).join('') +
+      `[Shop at H&M](https://www.hm.com/us/products/ladies/tops/)\n` +
+      `[Shop at Zara](https://www.zara.com/us/en/woman/t-shirts-l1066.html)\n` +
+      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/tops)\n\n` +
+      `### Bottom Options:\n` +
+      outfitRecs.bottoms.map(bottom => `• ${bottom}\n`).join('') +
+      `[Shop at H&M](https://www.hm.com/us/products/ladies/bottoms/)\n` +
+      `[Shop at Zara](https://www.zara.com/us/en/woman/jeans-l1066.html)\n` +
+      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/bottoms)\n\n` +
       `### Accessories:\n` +
       outfitRecs.accessories.map(acc => `• ${acc}\n`).join('') +
       `[Shop at H&M](https://www.hm.com/us/products/ladies/accessories/)\n` +
       `[Shop at Zara](https://www.zara.com/us/en/woman/accessories-l1066.html)\n` +
       `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/accessories)\n\n` +
+      `### Shoes:\n` +
+      outfitRecs.shoes.map(shoe => `• ${shoe}\n`).join('') +
+      `[Shop at H&M](https://www.hm.com/us/products/ladies/shoes/)\n` +
+      `[Shop at Zara](https://www.zara.com/us/en/woman/shoes-l1066.html)\n` +
+      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/shoes)\n\n` +
+      `### Optional Layers:\n` +
+      outfitRecs.layers.map(layer => `• ${layer}\n`).join('') +
+      `[Shop at H&M](https://www.hm.com/us/products/ladies/jackets-and-coats/)\n` +
+      `[Shop at Zara](https://www.zara.com/us/en/woman/jackets-l1066.html)\n` +
+      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/jackets)\n\n` +
       `### Style Tips:\n` +
       outfitRecs.tips.map(tip => `✨ ${tip}\n`).join('') + '\n' +
       `### Get More Inspiration:\n` +
@@ -1428,13 +1461,13 @@ export class AIService {
             'Stud Earrings'
           ],
           tips: [
-            'Build a versatile wardrobe',
-            'Focus on fit and quality',
             'Mix and match basics',
-            'Invest in classic pieces',
-            'Keep it simple'
+            'Layer strategically',
+            'Choose versatile pieces',
+            'Focus on fit',
+            'Keep it balanced'
           ],
-          inspiration: 'classic%20fashion%20style'
+          inspiration: 'classic%20outfit%20ideas'
         };
     }
   }
