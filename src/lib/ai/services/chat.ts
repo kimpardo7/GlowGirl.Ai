@@ -235,45 +235,10 @@ export class AIService {
     
     // Determine aesthetic from message or preferences
     let aesthetic = 'classic';
-    if (lowerMessage.includes('cottagecore')) {
-      return `Hey there! 🌸 Let me help you create some dreamy cottagecore hairstyles!\n\n` +
-        `### Cottagecore Hairstyle Ideas:\n` +
-        `• Romantic Braided Crown\n` +
-        `• Loose Waves with Floral Accents\n` +
-        `• Soft Milkmaid Braids\n` +
-        `• Vintage-Inspired Pin Curls\n` +
-        `• Twisted Half-Up Style\n` +
-        `• Braided Side Bun with Baby's Breath\n` +
-        `• Natural Curls with Flower Crown\n` +
-        `• Loose French Braid with Ribbon\n\n` +
-        `### Must-Have Hair Accessories:\n` +
-        `• Fresh or Silk Flowers\n` +
-        `• Delicate Hair Ribbons\n` +
-        `• Pearl Hair Pins\n` +
-        `• Vintage Hair Combs\n` +
-        `• Lace Hair Bows\n` +
-        `• Floral Hair Clips\n` +
-        `• Woven Headbands\n\n` +
-        `### Styling Products You'll Need:\n` +
-        `• Light Hold Mousse\n` +
-        `• Sea Salt Spray\n` +
-        `• Heat Protectant\n` +
-        `• Shine Serum\n` +
-        `• Soft Hold Hairspray\n\n` +
-        `### Where to Shop:\n` +
-        `• [Shop Hair Accessories at Free People](https://www.freepeople.com/accessories-hair/)\n` +
-        `• [Shop Vintage Hair Pieces on Etsy](https://www.etsy.com/market/vintage_hair_accessories)\n` +
-        `• [Shop Hair Products at Ulta](https://www.ulta.com/hair/)\n\n` +
-        `### Styling Tips:\n` +
-        `✨ Start with day-old hair for better hold\n` +
-        `✨ Use fresh flowers in the morning for special occasions\n` +
-        `✨ Embrace natural texture and loose pieces\n` +
-        `✨ Practice basic braiding techniques\n` +
-        `✨ Keep bobby pins in similar color to your hair\n\n` +
-        `### Get More Inspiration:\n` +
-        `• [Pinterest Cottagecore Hair](https://www.pinterest.com/search/pins/?q=cottagecore%20hairstyles)\n` +
-        `• [Instagram Cottagecore Hair](https://www.instagram.com/explore/tags/cottagecorehair/)\n\n` +
-        `💡 **Pro Tip:** The key to cottagecore hairstyles is embracing a soft, romantic look. Don't worry if some pieces fall loose - it adds to the whimsical charm!`;
+    if (lowerMessage.includes('1930') || lowerMessage.includes('30s')) {
+      aesthetic = '30s';
+    } else if (lowerMessage.includes('cottagecore')) {
+      aesthetic = 'cottagecore';
     } else if (lowerMessage.includes('y2k') || lowerMessage.includes('2000s') || lowerMessage.includes('retro')) {
       aesthetic = 'y2k';
     } else if (lowerMessage.includes('baddie')) {
@@ -286,325 +251,25 @@ export class AIService {
       aesthetic = stylePreferences[0];
     }
 
-    // Get Y2K-specific hairstyles
-    if (aesthetic === 'y2k') {
-      return `Hey girly! 💁‍♀️ Let's give you some totally Y2K hair inspo!\n\n` +
-        `### Y2K Hairstyle Ideas:\n` +
-        `• Space Buns with Face-Framing Pieces\n` +
-        `• Butterfly Clips Galore\n` +
-        `• Zigzag Part with Spiky Buns\n` +
-        `• Crimped Hair\n` +
-        `• Chunky Highlights\n` +
-        `• Flipped Out Ends\n` +
-        `• Mini Braids Throughout\n` +
-        `• High Pigtails\n` +
-        `• Bandana Headband Style\n` +
-        `• Colored Hair Extensions\n\n` +
-        `### Must-Have Hair Accessories:\n` +
-        `• Butterfly Clips in Various Colors\n` +
-        `• Colorful Snap Clips\n` +
-        `• Scrunchies (especially metallic ones)\n` +
-        `• Bandanas\n` +
-        `• Mini Claw Clips\n` +
-        `• Plastic Headbands\n` +
-        `• Hair Gems and Glitter\n\n` +
-        `### Styling Products You'll Need:\n` +
-        `• Crimping Iron\n` +
-        `• Hair Glitter Gel\n` +
-        `• Strong Hold Hair Spray\n` +
-        `• Shine Serum\n` +
-        `• Colorful Hair Extensions\n` +
-        `• Heat Protectant Spray\n\n` +
-        `### Where to Shop:\n` +
-        `• [Shop at Claire's](https://www.claires.com/hair-accessories/)\n` +
-        `• [Shop at Ulta](https://www.ulta.com/hair-accessories/)\n` +
-        `• [Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/f21/acc_hair-accessories)\n\n` +
-        `### Styling Tips:\n` +
-        `✨ Don't be afraid to mix multiple butterfly clips\n` +
-        `✨ Try face-framing pieces with any updo\n` +
-        `✨ Experiment with zigzag parts\n` +
-        `✨ Add pops of color with clip-in extensions\n` +
-        `✨ Layer different accessories together\n\n` +
-        `### Get More Inspiration:\n` +
-        `• [Pinterest Y2K Hair](https://www.pinterest.com/search/pins/?q=y2k%20hairstyles)\n` +
-        `• [Instagram Y2K Hair](https://www.instagram.com/explore/tags/y2khairstyle/)\n\n` +
-        `💡 **Pro Tip:** Y2K hair is all about fun and experimentation! Don't be afraid to mix different elements and make it your own. Just remember to use heat protection when styling!`;
-    }
+    const hairRecs = this.getHairstylesByAesthetic(aesthetic);
 
-    // Get hair color recommendations based on seasonal color
-    const getHairColorsBySeasonalColor = (season: string): string[] => {
-      switch(season.toLowerCase()) {
-        case 'winter':
-          return ['Deep Black', 'Cool Brown', 'Platinum Blonde', 'Blue-Black', 'Ash Brown'];
-        case 'summer':
-          return ['Light Ash Brown', 'Cool Blonde', 'Silver Blonde', 'Medium Ash Brown', 'Pearl Blonde'];
-        case 'spring':
-          return ['Golden Blonde', 'Warm Brown', 'Strawberry Blonde', 'Honey Blonde', 'Light Copper'];
-        case 'autumn':
-          return ['Auburn', 'Copper Red', 'Golden Brown', 'Chestnut Brown', 'Rich Chocolate'];
-        default:
-          return ['Natural Brown', 'Soft Black', 'Medium Blonde', 'Caramel Brown', 'Dark Brown'];
-      }
-    };
-
-    // Get hairstyle recommendations based on face shape
-    const getHairstylesByFaceShape = (shape: string): string[] => {
-      switch(shape.toLowerCase()) {
-        case 'oval':
-          return ['Long Layers', 'Blunt Bob', 'Side-Swept Bangs', 'Textured Pixie', 'Beach Waves'];
-        case 'round':
-          return ['Long Layered Cut', 'Side Part', 'Asymmetrical Bob', 'Long Side-Swept Bangs', 'Volume at Crown'];
-        case 'square':
-          return ['Soft Layers', 'Long Waves', 'Side-Swept Bangs', 'Textured Lob', 'Wispy Ends'];
-        case 'heart':
-          return ['Side-Swept Bangs', 'Chin-Length Bob', 'Long Layers', 'Textured Pixie', 'Medium Layered Cut'];
-        case 'diamond':
-          return ['Side-Swept Bangs', 'Chin-Length Styles', 'Textured Pixie', 'Medium Layered Cut', 'Wispy Bangs'];
-        case 'rectangle':
-          return ['Long Layers with Face-Framing', 'Shoulder-Length Cut', 'Side-Swept Bangs', 'Textured Waves', 'Volume at Sides'];
-        default:
-          return ['Medium-Length Layers', 'Classic Bob', 'Side-Swept Bangs', 'Long Layers', 'Beach Waves'];
-      }
-    };
-
-    // Get aesthetic-specific hairstyles
-    const getHairstylesByAesthetic = (aesthetic: string): HairRecommendations => {
-      switch(aesthetic.toLowerCase()) {
-        case 'baddie':
-          return {
-            styles: [
-              'Sleek High Ponytail with Baby Hairs',
-              'Long Layered Extensions',
-              'Wet Look Bob',
-              'Braided Space Buns',
-              'Slicked Back Bun with Face-Framing Pieces'
-            ],
-            products: [
-              'Edge Control',
-              'Heat Protectant Spray',
-              'Shine Serum',
-              'Strong Hold Gel',
-              'Quality Hair Extensions'
-            ],
-            accessories: [
-              'Silk Scrunchies',
-              'Edge Brush',
-              'Hair Ties',
-              'Bobby Pins',
-              'Hair Clips'
-            ],
-            tips: [
-              'Master your baby hairs',
-              'Invest in quality extensions',
-              'Perfect the sleek look',
-              'Learn to do intricate braids'
-            ],
-            inspiration: 'baddie%20hairstyles'
-          };
-        case 'cottagecore':
-          return {
-            styles: [
-              'Romantic Braided Crown',
-              'Soft Loose Waves',
-              'Floral-Adorned Braids',
-              'Natural Curls with Accessories',
-              'Vintage-Inspired Pin Curls'
-            ],
-            products: [
-              'Sea Salt Spray',
-              'Light Hold Cream',
-              'Natural Bristle Brush',
-              'Heat Protectant',
-              'Shine Serum'
-            ],
-            accessories: [
-              'Fresh or Silk Flowers',
-              'Delicate Hair Ribbons',
-              'Pearl Hair Pins',
-              'Vintage Hair Combs',
-              'Lace Hair Bows'
-            ],
-            tips: [
-              'Master different braid styles',
-              'Use natural styling methods',
-              'Incorporate flowers and ribbons',
-              'Embrace your natural texture'
-            ],
-            inspiration: 'cottagecore%20hair'
-          };
-        case 'y2k':
-          return {
-            styles: [
-              'Space Buns with Face-Framing Pieces',
-              'Butterfly Clips Galore',
-              'Spiky Buns',
-              'Crimped Sections',
-              'Colorful Hair Extensions'
-            ],
-            products: [
-              'Hair Gems and Clips',
-              'Crimping Iron',
-              'Colorful Hair Extensions',
-              'Glitter Hair Gel',
-              'Fun Hair Accessories'
-            ],
-            accessories: [
-              'Butterfly Hair Clips',
-              'Colorful Snap Clips',
-              'Scrunchies',
-              'Mini Claw Clips',
-              'Hair Gems'
-            ],
-            tips: [
-              'Mix different hair accessories',
-              'Don\'t be afraid of color',
-              'Try fun updos',
-              'Experiment with temporary dyes'
-            ],
-            inspiration: 'y2k%20hairstyles'
-          };
-        case 'dark-academia':
-          return {
-            styles: [
-              'Low Chignon',
-              'Vintage-Inspired Waves',
-              'Sleek Low Bun',
-              'Classic French Twist',
-              'Sophisticated Ponytail'
-            ],
-            products: [
-              'Matte Pomade',
-              'Bobby Pins',
-              'Light Hold Hairspray',
-              'Silk Scrunchies',
-              'Classic Hair Clips'
-            ],
-            inspiration: 'dark%20academia%20hair',
-            tips: [
-              'Keep styles polished and neat',
-              'Use classic accessories',
-              'Focus on timeless looks',
-              'Master elegant updos'
-            ]
-          };
-        case 'minimalist':
-          return {
-            tops: [
-              'Basic White Tee',
-              'Black Turtleneck',
-              'Silk Button-Down',
-              'Fitted Tank Top',
-              'Crew Neck Sweater'
-            ],
-            bottoms: [
-              'Straight Leg Jeans',
-              'Black Trousers',
-              'Midi Slip Skirt',
-              'Wide Leg Pants',
-              'Tailored Shorts'
-            ],
-            accessories: [
-              'Simple Gold Necklace',
-              'Leather Tote',
-              'Classic Watch',
-              'Minimal Earrings',
-              'Leather Belt'
-            ],
-            shoes: [
-              'White Sneakers',
-              'Black Loafers',
-              'Ankle Boots',
-              'Leather Slides',
-              'Ballet Flats'
-            ],
-            layers: [
-              'Classic Blazer',
-              'Camel Coat',
-              'Denim Jacket',
-              'Black Cardigan',
-              'Trench Coat'
-            ],
-            tips: [
-              'Focus on quality basics',
-              'Keep color palette neutral',
-              'Choose clean lines',
-              'Invest in timeless pieces',
-              'Less is more'
-            ],
-            inspiration: 'minimal%20fashion%20style'
-          };
-        default:
-          return {
-            styles: [
-              'Classic Bob',
-              'Long Layers',
-              'Side-Swept Bangs',
-              'Sleek Straight',
-              'Natural Waves'
-            ],
-            products: [
-              'Heat Protectant',
-              'Volumizing Mousse',
-              'Light Hold Hairspray',
-              'Shine Serum',
-              'Dry Shampoo'
-            ],
-            accessories: [
-              'Classic Hair Clips',
-              'Simple Hair Ties',
-              'Basic Bobby Pins',
-              'Neutral Headbands',
-              'Minimal Scrunchies'
-            ],
-            tips: [
-              'Focus on healthy hair care',
-              'Keep styles polished',
-              'Use heat protection',
-              'Regular trims'
-            ],
-            inspiration: 'classic%20hairstyles'
-          };
-      }
-    };
-
-    const recommendedColors = getHairColorsBySeasonalColor(seasonalColor);
-    const recommendedStyles = getHairstylesByFaceShape(faceShape);
-
-    const outfitRecs = this.getOutfitsByAesthetic(aesthetic);
-
-    return `Hey girly! 👗 Let me help you create the perfect ${aesthetic} look!\n\n` +
-      `Here's a curated ${aesthetic} outfit guide with shopping links:\n\n` +
-      `### Top Options:\n` +
-      outfitRecs.tops.map(top => `• ${top}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/tops/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/t-shirts-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/tops)\n\n` +
-      `### Bottom Options:\n` +
-      outfitRecs.bottoms.map(bottom => `• ${bottom}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/bottoms/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/jeans-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/bottoms)\n\n` +
-      `### Accessories:\n` +
-      outfitRecs.accessories.map(acc => `• ${acc}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/accessories/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/accessories-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/accessories)\n\n` +
-      `### Shoes:\n` +
-      outfitRecs.shoes.map(shoe => `• ${shoe}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/shoes/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/shoes-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/shoes)\n\n` +
-      `### Optional Layers:\n` +
-      outfitRecs.layers.map(layer => `• ${layer}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/jackets-and-coats/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/jackets-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/jackets)\n\n` +
-      `### Style Tips:\n` +
-      outfitRecs.tips.map(tip => `✨ ${tip}\n`).join('') + '\n' +
+    return `Hey there! 💁‍♀️ Let me help you create some amazing ${aesthetic} hairstyles!\n\n` +
+      `### ${aesthetic.charAt(0).toUpperCase() + aesthetic.slice(1)} Hairstyle Ideas:\n` +
+      hairRecs.styles.map(style => `• ${style}\n`).join('') + '\n' +
+      `### Must-Have Hair Accessories:\n` +
+      hairRecs.accessories.map(acc => `• ${acc}\n`).join('') + '\n' +
+      `### Styling Products You'll Need:\n` +
+      hairRecs.products.map(product => `• ${product}\n`).join('') + '\n' +
+      `### Where to Shop:\n` +
+      `• [Shop Hair Accessories at Free People](https://www.freepeople.com/accessories-hair/)\n` +
+      `• [Shop Vintage Hair Pieces on Etsy](https://www.etsy.com/market/vintage_hair_accessories)\n` +
+      `• [Shop Hair Products at Ulta](https://www.ulta.com/hair/)\n\n` +
+      `### Styling Tips:\n` +
+      hairRecs.tips.map(tip => `✨ ${tip}\n`).join('') + '\n' +
       `### Get More Inspiration:\n` +
-      `[Pinterest ${aesthetic} Style](https://www.pinterest.com/search/pins/?q=${outfitRecs.inspiration})\n` +
-      `[Instagram ${aesthetic} Fashion](https://www.instagram.com/explore/tags/${aesthetic.replace('-', '')}style/)\n\n` +
-      `💡 Pro Tip: Mix and match these pieces to create multiple ${aesthetic} outfits! The key is to have versatile pieces that capture the ${aesthetic} vibe while staying true to your personal style.`;
+      `• [Pinterest ${aesthetic} Hair](https://www.pinterest.com/search/pins/?q=${hairRecs.inspiration})\n` +
+      `• [Instagram ${aesthetic} Hair](https://www.instagram.com/explore/tags/${aesthetic.replace('-', '')}hair/)\n\n` +
+      `💡 **Pro Tip:** The key to ${aesthetic} hairstyles is embracing the aesthetic's unique charm. Have fun experimenting with different styles and accessories!`;
   }
 
   private formatPrompt(messages: ChatMessage[]): string {
@@ -612,7 +277,38 @@ export class AIService {
     const lastMessage = messages[messages.length - 1];
     const lowerMessage = lastMessage.content.toLowerCase();
     
-    // Check for jewelry-related queries first
+    // Check for outfit-related queries first
+    if (lowerMessage.includes('outfit') || lowerMessage.includes('clothes') || 
+        lowerMessage.includes('wear') || lowerMessage.includes('dress') || 
+        lowerMessage.includes('style') || lowerMessage.includes('fashion') ||
+        lowerMessage.includes('mall') || lowerMessage.includes('shopping') || 
+        lowerMessage.includes('baddie') || lowerMessage.includes('going to') || 
+        lowerMessage.includes('what to wear') || lowerMessage.includes('y2k') ||
+        lowerMessage.includes('cottagecore') || lowerMessage.includes('retro') ||
+        lowerMessage.includes('dark academia') || lowerMessage.includes('minimalist') ||
+        lowerMessage.includes('inspo') || lowerMessage.includes('1930') ||
+        lowerMessage.includes('30s')) {
+      
+      // Determine aesthetic from message
+      let aesthetic = 'classic';
+      if (lowerMessage.includes('1930') || lowerMessage.includes('30s')) {
+        aesthetic = '30s';
+      } else if (lowerMessage.includes('baddie')) {
+        aesthetic = 'baddie';
+      } else if (lowerMessage.includes('y2k')) {
+        aesthetic = 'y2k';
+      } else if (lowerMessage.includes('cottagecore')) {
+        aesthetic = 'cottagecore';
+      } else if (lowerMessage.includes('dark academia')) {
+        aesthetic = 'dark-academia';
+      } else if (lowerMessage.includes('minimalist')) {
+        aesthetic = 'minimalist';
+      }
+      
+      return this.getFallbackOutfitResponse(lastMessage.content);
+    }
+    
+    // Then check for jewelry-related queries
     if (lowerMessage.includes('jewelry') || lowerMessage.includes('jewellery') || 
         lowerMessage.includes('necklace') || lowerMessage.includes('bracelet') || 
         lowerMessage.includes('earrings') || lowerMessage.includes('rings') ||
@@ -620,24 +316,58 @@ export class AIService {
       return this.getFallbackJewelryResponse(lastMessage.content);
     }
     
-    // Check for outfit-related queries
-    if (lowerMessage.includes('outfit') || lowerMessage.includes('clothes') || lowerMessage.includes('wear') || 
-        lowerMessage.includes('dress') || lowerMessage.includes('style') || lowerMessage.includes('fashion') ||
-        lowerMessage.includes('mall') || lowerMessage.includes('shopping') || lowerMessage.includes('baddie') ||
-        lowerMessage.includes('going to') || lowerMessage.includes('what to wear')) {
-      return this.getFallbackOutfitResponse(lastMessage.content);
-    }
-    
     // Then check for makeup queries
     if (lowerMessage.includes('makeup') || lowerMessage.includes('glam') || lowerMessage.includes('beauty')) {
+      if (lowerMessage.includes('30s') || lowerMessage.includes('1930')) {
+        return `Hey girly! 💄 Let me help you create an authentic 1930s makeup look!\n\n` +
+          `The 1930s were all about Hollywood glamour and sophisticated beauty. Here's your step-by-step guide:\n\n` +
+          `### 1. Face Base\n` +
+          `• Start with a matte powder foundation for that signature porcelain finish\n` +
+          `• Apply subtle rosy cream blush to the apples of cheeks\n` +
+          `• Keep the complexion matte and velvety\n` +
+          `• Use powder to set everything in place\n\n` +
+          `### 2. Eyes\n` +
+          `• Create thin, rounded eyebrows (the defining feature of 1930s makeup!)\n` +
+          `• Apply grey or brown cream eyeshadow, blending upward\n` +
+          `• Use Vaseline or cream-based products for authentic shine\n` +
+          `• Apply mascara to both top and bottom lashes\n` +
+          `• Optional: thin line of eyeliner close to lashes\n\n` +
+          `### 3. Lips\n` +
+          `• Line lips in a rounded, rosebud shape\n` +
+          `• Create a defined cupid's bow (very important for 1930s!)\n` +
+          `• Fill with dark red or burgundy lipstick\n` +
+          `• Keep the finish matte\n\n` +
+          `### Essential Products\n` +
+          `• Matte powder foundation\n` +
+          `• Cream-based eyeshadows\n` +
+          `• Dark red/burgundy lipstick\n` +
+          `• Natural-bristle makeup brushes\n` +
+          `• Setting powder\n\n` +
+          `### Pro Tips\n` +
+          `✨ The thin, rounded brows were THE defining feature of 1930s makeup\n` +
+          `✨ Focus on creating a matte, porcelain-like complexion\n` +
+          `✨ The cupid's bow lip shape is crucial for authenticity\n` +
+          `✨ Use cream-based products for that genuine 1930s look\n\n` +
+          `### Get Inspired\n` +
+          `Take inspiration from 1930s beauty icons:\n` +
+          `• Jean Harlow\n` +
+          `• Greta Garbo\n` +
+          `• Marlene Dietrich\n` +
+          `• Joan Crawford\n\n` +
+          `Check out these vintage beauty resources:\n` +
+          `[1930s Makeup Tutorials](https://www.youtube.com/results?search_query=1930s+vintage+makeup+tutorial)\n` +
+          `[Old Hollywood Glamour](https://www.youtube.com/results?search_query=old+hollywood+glamour+makeup)\n\n` +
+          `Remember, 1930s makeup was all about creating a sophisticated, glamorous look with a focus on thin brows, defined lips, and a flawless complexion! 💋✨`;
+      }
+      
       const guideContent = this.context.glamGuide;
       if (guideContent) {
-        let prompt = '';
-        
-        // Add minimal system context
-        const systemMessage = messages.find(msg => msg.role === 'system');
-        if (systemMessage) {
-          prompt += `You are a fashion advisor. ${systemMessage.content.split('\n')[0]}\n\n`;
+    let prompt = '';
+    
+    // Add minimal system context
+    const systemMessage = messages.find(msg => msg.role === 'system');
+    if (systemMessage) {
+      prompt += `You are a fashion advisor. ${systemMessage.content.split('\n')[0]}\n\n`;
         }
 
         // Add context based on the message type
@@ -656,11 +386,16 @@ export class AIService {
       }
     }
     
-    // Check for hair-related keywords first
+    // Check for hair-related keywords with more variations
     if (lowerMessage.includes('hair') || lowerMessage.includes('hairstyle') || 
         lowerMessage.includes('haircut') || lowerMessage.includes('bangs') ||
         lowerMessage.includes('color') || lowerMessage.includes('dye') ||
-        lowerMessage.includes('style my hair') || lowerMessage.includes('cut')) {
+        lowerMessage.includes('style my hair') || lowerMessage.includes('cut') ||
+        lowerMessage.includes('retro hair') || lowerMessage.includes('y2k hair') ||
+        (lowerMessage.includes('y2k') && !lowerMessage.includes('outfit')) ||
+        (lowerMessage.includes('retro') && !lowerMessage.includes('outfit')) ||
+        (lowerMessage.includes('1930') && !lowerMessage.includes('outfit')) ||
+        (lowerMessage.includes('30s') && !lowerMessage.includes('outfit'))) {
       console.log('Hair query detected, returning hair response');
       return this.getFallbackHairResponse(lastMessage.content);
     }
@@ -732,7 +467,8 @@ export class AIService {
     
     // Determine aesthetic from message or preferences
     let aesthetic = 'classic';
-    if (lowerMessage.includes('baddie')) aesthetic = 'baddie';
+    if (lowerMessage.includes('1930') || lowerMessage.includes('30s')) aesthetic = '30s';
+    else if (lowerMessage.includes('baddie')) aesthetic = 'baddie';
     else if (lowerMessage.includes('y2k') || lowerMessage.includes('retro')) aesthetic = 'y2k';
     else if (lowerMessage.includes('cottagecore')) aesthetic = 'cottagecore';
     else if (lowerMessage.includes('dark academia')) aesthetic = 'dark-academia';
@@ -741,39 +477,25 @@ export class AIService {
 
     const outfitRecs = this.getOutfitsByAesthetic(aesthetic);
 
-    return `Hey girly! 👗 Let me help you create the perfect ${aesthetic} look!\n\n` +
-      `Here's a curated ${aesthetic} outfit guide with shopping links:\n\n` +
-      `### Top Options:\n` +
+    return `Hey girly! 👗 Let me help you create the perfect ${aesthetic === '30s' ? '1930s' : aesthetic} look!\n\n` +
+      `Here's a curated guide to achieve that perfect ${aesthetic === '30s' ? '1930s glamour' : aesthetic} style:\n\n` +
+      `### Signature Pieces:\n\n` +
+      `#### Tops:\n` +
       outfitRecs.tops.map(top => `• ${top}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/tops/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/t-shirts-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/tops)\n\n` +
-      `### Bottom Options:\n` +
+      `\n#### Bottoms:\n` +
       outfitRecs.bottoms.map(bottom => `• ${bottom}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/bottoms/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/jeans-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/bottoms)\n\n` +
-      `### Accessories:\n` +
-      outfitRecs.accessories.map(acc => `• ${acc}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/accessories/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/accessories-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/accessories)\n\n` +
-      `### Shoes:\n` +
+      `\n#### Shoes:\n` +
       outfitRecs.shoes.map(shoe => `• ${shoe}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/shoes/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/shoes-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/shoes)\n\n` +
-      `### Optional Layers:\n` +
+      `\n#### Layers:\n` +
       outfitRecs.layers.map(layer => `• ${layer}\n`).join('') +
-      `[Shop at H&M](https://www.hm.com/us/products/ladies/jackets-and-coats/)\n` +
-      `[Shop at Zara](https://www.zara.com/us/en/woman/jackets-l1066.html)\n` +
-      `[Shop at Forever 21](https://www.forever21.com/us/shop/catalog/category/21women/jackets)\n\n` +
-      `### Style Tips:\n` +
-      outfitRecs.tips.map(tip => `✨ ${tip}\n`).join('') + '\n' +
-      `### Get More Inspiration:\n` +
-      `[Pinterest ${aesthetic} Style](https://www.pinterest.com/search/pins/?q=${outfitRecs.inspiration})\n` +
-      `[Instagram ${aesthetic} Fashion](https://www.instagram.com/explore/tags/${aesthetic.replace('-', '')}style/)\n\n` +
-      `💡 Pro Tip: Mix and match these pieces to create multiple ${aesthetic} outfits! The key is to have versatile pieces that capture the ${aesthetic} vibe while staying true to your personal style.`;
+      `\n#### Essential Accessories:\n` +
+      outfitRecs.accessories.map(acc => `• ${acc}\n`).join('') +
+      `\n### Styling Tips:\n` +
+      outfitRecs.tips.map(tip => `✨ ${tip}\n`).join('') +
+      `\n### Get More Inspiration:\n` +
+      `• [Pinterest ${aesthetic === '30s' ? '1930s Fashion' : outfitRecs.inspiration.replace(/%20/g, ' ')}](https://www.pinterest.com/search/pins/?q=${outfitRecs.inspiration})\n` +
+      `• [Instagram ${aesthetic === '30s' ? '1930s Fashion' : outfitRecs.inspiration.replace(/%20/g, ' ')}](https://www.instagram.com/explore/tags/${outfitRecs.inspiration.replace(/%20/g, '')})\n\n` +
+      `💡 Pro Tip: ${aesthetic === '30s' ? 'The 1930s were all about feminine elegance and Hollywood glamour. Focus on bias-cut pieces, elegant draping, and sophisticated accessories!' : 'Mix and match these pieces to create multiple outfits! The key is to have versatile pieces that capture the vibe while staying true to your personal style.'}`;
   }
 
   private async handleApiError(error: any, userMessage: string, requestId: string): Promise<string> {
@@ -1037,14 +759,48 @@ export class AIService {
     const newRequestId = this.generateRequestId(userMessage);
     const lowerMessage = userMessage.toLowerCase();
     
-    // Check for hair-related keywords first with more variations
+    // Check for outfit-related keywords first with more variations
+    if (lowerMessage.includes('outfit') || lowerMessage.includes('clothes') || 
+        lowerMessage.includes('wear') || lowerMessage.includes('dress') || 
+        lowerMessage.includes('style') || lowerMessage.includes('fashion') ||
+        lowerMessage.includes('mall') || lowerMessage.includes('shopping') || 
+        lowerMessage.includes('baddie') || lowerMessage.includes('going to') || 
+        lowerMessage.includes('what to wear') || lowerMessage.includes('y2k') ||
+        lowerMessage.includes('cottagecore') || lowerMessage.includes('retro') ||
+        lowerMessage.includes('dark academia') || lowerMessage.includes('minimalist') ||
+        lowerMessage.includes('inspo') || lowerMessage.includes('1930') ||
+        lowerMessage.includes('30s')) {
+      console.log('Outfit query detected, returning outfit response');
+      
+      // Determine aesthetic from message
+      let aesthetic = 'classic';
+      if (lowerMessage.includes('1930') || lowerMessage.includes('30s')) {
+        aesthetic = '30s';
+      } else if (lowerMessage.includes('baddie')) {
+        aesthetic = 'baddie';
+      } else if (lowerMessage.includes('y2k')) {
+        aesthetic = 'y2k';
+      } else if (lowerMessage.includes('cottagecore')) {
+        aesthetic = 'cottagecore';
+      } else if (lowerMessage.includes('dark academia')) {
+        aesthetic = 'dark-academia';
+      } else if (lowerMessage.includes('minimalist')) {
+        aesthetic = 'minimalist';
+      }
+      
+      return this.getFallbackOutfitResponse(userMessage);
+    }
+    
+    // Check for hair-related keywords with more variations
     if (lowerMessage.includes('hair') || lowerMessage.includes('hairstyle') || 
         lowerMessage.includes('haircut') || lowerMessage.includes('bangs') ||
         lowerMessage.includes('color') || lowerMessage.includes('dye') ||
         lowerMessage.includes('style my hair') || lowerMessage.includes('cut') ||
         lowerMessage.includes('retro hair') || lowerMessage.includes('y2k hair') ||
         (lowerMessage.includes('y2k') && !lowerMessage.includes('outfit')) ||
-        (lowerMessage.includes('retro') && !lowerMessage.includes('outfit'))) {
+        (lowerMessage.includes('retro') && !lowerMessage.includes('outfit')) ||
+        (lowerMessage.includes('1930') && !lowerMessage.includes('outfit')) ||
+        (lowerMessage.includes('30s') && !lowerMessage.includes('outfit'))) {
       console.log('Hair query detected, returning hair response');
       return this.getFallbackHairResponse(userMessage);
     }
@@ -1056,22 +812,9 @@ export class AIService {
         lowerMessage.includes('accessories') || lowerMessage.includes('jewels') ||
         lowerMessage.includes('bling') || lowerMessage.includes('chain') ||
         lowerMessage.includes('pendant') || lowerMessage.includes('gems') ||
-        lowerMessage.includes('jewel') || lowerMessage.includes('inspo')) {
+        lowerMessage.includes('jewel')) {
       console.log('Jewelry query detected, returning jewelry response');
       return this.getFallbackJewelryResponse(userMessage);
-    }
-    
-    // Check for outfit-related keywords with more variations
-    if (lowerMessage.includes('outfit') || lowerMessage.includes('clothes') || 
-        lowerMessage.includes('wear') || lowerMessage.includes('dress') || 
-        lowerMessage.includes('style') || lowerMessage.includes('fashion') ||
-        lowerMessage.includes('mall') || lowerMessage.includes('shopping') || 
-        lowerMessage.includes('baddie') || lowerMessage.includes('going to') || 
-        lowerMessage.includes('what to wear') || lowerMessage.includes('y2k') ||
-        lowerMessage.includes('cottagecore') || lowerMessage.includes('retro') ||
-        lowerMessage.includes('dark academia') || lowerMessage.includes('minimalist')) {
-      console.log('Outfit query detected, returning outfit response');
-      return this.getFallbackOutfitResponse(userMessage);
     }
 
     // Check for duplicate messages
@@ -1087,7 +830,7 @@ export class AIService {
         return this.getFallbackOutfitResponse(userMessage);
       }
     }
-
+    
     // Log incoming request
     console.log('Chat Service Debug:', {
       userMessage,
@@ -1170,7 +913,7 @@ export class AIService {
       }
 
       const data = await response.json();
-      
+
       // Extract response text
       let aiResponse: string;
       if (Array.isArray(data) && data.length > 0) {
@@ -1241,233 +984,384 @@ export class AIService {
   // Get outfit recommendations based on aesthetic
   private getOutfitsByAesthetic(aesthetic: string): OutfitRecommendations {
     switch(aesthetic.toLowerCase()) {
-      case 'baddie':
+      case 'coquette':
         return {
           tops: [
-            'Fitted Crop Top',
-            'Corset Top',
-            'Cut-out Bodysuit'
+            'Bow-adorned blouses',
+            'Lace-trim tops',
+            'Peter Pan collar shirts',
+            'Heart motif sweaters',
+            'Ruffle detail tops'
           ],
           bottoms: [
-            'High-Waisted Cargo Pants',
-            'Leather Pants',
-            'Baggy Jeans'
+            'Pleated mini skirts',
+            'Tennis skirts',
+            'High-waisted shorts',
+            'A-line skirts',
+            'Lace-trim skirts'
           ],
           shoes: [
-            'Platform Sneakers',
-            'Chunky Boots',
-            'Strappy Heels'
+            'Mary Jane shoes',
+            'Platform mary janes',
+            'Ballet flats',
+            'Bow detail heels',
+            'Lace-up boots'
           ],
           layers: [
-            'Cropped Leather Jacket',
-            'Oversized Bomber',
-            'Puffer Jacket'
+            'Bow cardigans',
+            'Lace trim jackets',
+            'Heart pattern coats',
+            'Ruffle detail blazers',
+            'Cropped cardigans'
           ],
           accessories: [
-            'Chunky Gold Chains',
-            'Large Hoop Earrings',
-            'Designer Mini Bag',
-            'Statement Sunglasses',
-            'Chunky Rings'
+            'Pearl hair clips',
+            'Ribbon headbands',
+            'Heart-shaped bags',
+            'Lace socks',
+            'Bow chokers'
           ],
           tips: [
-            'Layer your gold jewelry',
-            'Show some skin strategically',
-            'Mix fitted and oversized pieces',
-            'Add designer accessories',
-            'Keep makeup bold and glossy'
+            'Layer delicate pieces',
+            'Mix different bow details',
+            'Add pearl accessories',
+            'Incorporate heart motifs',
+            'Use pastel colors'
           ],
-          inspiration: 'baddie%20outfit%20aesthetic'
+          inspiration: 'coquette%20fashion'
         };
-      case 'y2k':
+
+      case 'grunge':
         return {
           tops: [
-            'Baby Tee',
-            'Halter Top',
-            'Butterfly Print Crop'
+            'Band t-shirts',
+            'Oversized flannels',
+            'Distressed sweaters',
+            'Mesh tops',
+            'Graphic tees'
           ],
           bottoms: [
-            'Low-Rise Jeans',
-            'Cargo Pants',
-            'Pleated Mini Skirt'
+            'Ripped jeans',
+            'Plaid skirts',
+            'Cargo pants',
+            'Distressed denim',
+            'Leather pants'
           ],
           shoes: [
-            'Platform Sandals',
-            'Chunky Sneakers',
-            'Combat Boots'
+            'Combat boots',
+            'Platform boots',
+            'Chunky sneakers',
+            'Doc Martens',
+            'Platform creepers'
           ],
           layers: [
-            'Fuzzy Cardigan',
-            'Track Jacket',
-            'Cropped Denim Jacket'
+            'Leather jackets',
+            'Oversized denim jackets',
+            'Flannel shirts',
+            'Distressed cardigans',
+            'Band hoodies'
           ],
           accessories: [
-            'Butterfly Hair Clips',
-            'Tinted Sunglasses',
-            'Mini Shoulder Bag',
-            'Chunky Plastic Rings',
-            'Platform Flip Flops'
+            'Chokers',
+            'Chain necklaces',
+            'Studded belts',
+            'Fishnet tights',
+            'Beanie hats'
           ],
           tips: [
-            'Mix prints and colors',
-            'Layer with mesh tops',
-            'Add fun hair accessories',
-            'Don\'t fear crop tops',
-            'Embrace platform shoes'
+            'Mix patterns and textures',
+            'Layer oversized pieces',
+            'Add edgy accessories',
+            'Incorporate dark elements',
+            'Don\'t be too polished'
           ],
-          inspiration: 'y2k%20fashion%20outfit'
+          inspiration: 'grunge%20style'
         };
-      case 'cottagecore':
+
+      case 'mob-wife':
         return {
           tops: [
-            'Puff Sleeve Blouse',
-            'Floral Print Top',
-            'Peasant Top'
+            'Silk blouses',
+            'Fitted bodysuits',
+            'Animal print tops',
+            'Off-shoulder tops',
+            'Designer logo shirts'
           ],
           bottoms: [
-            'Flowy Maxi Skirt',
-            'Prairie Dress',
-            'Linen Shorts'
+            'Leather pants',
+            'Fitted skirts',
+            'Animal print pants',
+            'High-slit dresses',
+            'Bodycon dresses'
           ],
           shoes: [
-            'Mary Janes',
-            'Lace-up Boots',
-            'Ballet Flats'
+            'Stiletto heels',
+            'Designer boots',
+            'Platform pumps',
+            'Thigh-high boots',
+            'Animal print heels'
           ],
           layers: [
-            'Knit Cardigan',
-            'Linen Blazer',
-            'Floral Kimono'
+            'Fur coats',
+            'Leather jackets',
+            'Animal print coats',
+            'Designer blazers',
+            'Sequin jackets'
           ],
           accessories: [
-            'Straw Hat',
-            'Floral Hair Clips',
-            'Woven Basket Bag',
-            'Lace Socks',
-            'Pearl Hair Pins'
+            'Gold chains',
+            'Statement rings',
+            'Designer bags',
+            'Large sunglasses',
+            'Diamond jewelry'
           ],
           tips: [
-            'Layer with delicate pieces',
-            'Mix florals and lace',
-            'Add natural accessories',
-            'Choose soft, muted colors',
-            'Incorporate vintage pieces'
+            'Layer gold jewelry',
+            'Mix animal prints',
+            'Add statement pieces',
+            'Choose luxe fabrics',
+            'Don\'t be subtle'
           ],
-          inspiration: 'cottagecore%20outfit'
+          inspiration: 'mob%20wife%20aesthetic'
         };
-      case 'dark-academia':
+
+      case 'old-money':
         return {
           tops: [
-            'Oxford Button-Down',
-            'Turtleneck Sweater',
-            'Wool Vest'
+            'Cashmere sweaters',
+            'Oxford shirts',
+            'Tennis polos',
+            'Silk blouses',
+            'Turtlenecks'
           ],
           bottoms: [
-            'Plaid Trousers',
-            'Pleated Skirt',
-            'Wool Pants'
+            'Tailored trousers',
+            'Tennis skirts',
+            'Wool skirts',
+            'Khaki pants',
+            'Pleated skirts'
           ],
           shoes: [
-            'Oxford Shoes',
             'Loafers',
-            'Chelsea Boots'
+            'Tennis shoes',
+            'Riding boots',
+            'Ballet flats',
+            'Classic pumps'
           ],
           layers: [
-            'Tweed Blazer',
-            'Wool Coat',
-            'Trench Coat'
+            'Tweed blazers',
+            'Cashmere coats',
+            'Tennis sweaters',
+            'Equestrian jackets',
+            'Wool coats'
           ],
           accessories: [
-            'Leather Satchel',
-            'Wire Frame Glasses',
-            'Silk Neck Scarf',
-            'Leather Watch',
-            'Vintage Brooch'
+            'Pearl necklaces',
+            'Tennis bracelets',
+            'Silk scarves',
+            'Leather bags',
+            'Gold watches'
           ],
           tips: [
-            'Layer with academic pieces',
+            'Invest in quality basics',
+            'Choose classic patterns',
             'Stick to neutral colors',
-            'Mix textures like wool and leather',
-            'Add vintage accessories',
-            'Keep it polished and preppy'
+            'Focus on tailoring',
+            'Keep jewelry minimal'
           ],
-          inspiration: 'dark%20academia%20fashion'
+          inspiration: 'old%20money%20style'
         };
-      case 'minimalist':
+
+      // Add more cases for other aesthetics...
+      case 'alt':
         return {
           tops: [
-            'Basic White Tee',
-            'Black Turtleneck',
-            'Silk Button-Down'
+            'Band tees',
+            'Mesh tops',
+            'Crop tops',
+            'Graphic tanks',
+            'Corsets'
           ],
           bottoms: [
-            'Straight Leg Jeans',
-            'Black Trousers',
-            'Midi Slip Skirt'
+            'Ripped jeans',
+            'Cargo pants',
+            'Chain pants',
+            'Pleated skirts',
+            'Platform boots'
           ],
           shoes: [
-            'White Sneakers',
-            'Ankle Boots',
-            'Ballet Flats'
+            'Platform boots',
+            'Chunky sneakers',
+            'Combat boots',
+            'Creepers',
+            'Platform sandals'
           ],
           layers: [
-            'Classic Blazer',
-            'Camel Coat',
-            'Trench Coat'
+            'Leather jackets',
+            'Mesh overlays',
+            'Oversized hoodies',
+            'Studded vests',
+            'Fishnet tops'
           ],
           accessories: [
-            'Simple Gold Necklace',
-            'Leather Tote',
-            'Classic Watch',
-            'Minimal Earrings',
-            'Leather Belt'
+            'Chain necklaces',
+            'Spiked chokers',
+            'Platform boots',
+            'Fingerless gloves',
+            'Statement belts'
           ],
           tips: [
-            'Focus on quality basics',
-            'Keep color palette neutral',
-            'Choose clean lines',
-            'Invest in timeless pieces',
-            'Less is more'
+            'Mix textures',
+            'Layer chains',
+            'Add edgy details',
+            'Incorporate platforms',
+            'Be bold with accessories'
           ],
-          inspiration: 'minimal%20fashion%20style'
+          inspiration: 'alternative%20fashion'
         };
+
+      // Continue with more aesthetics...
+      case 'boho':
+        return {
+          tops: [
+            'Flowy blouses',
+            'Crochet tops',
+            'Off-shoulder tops',
+            'Embroidered tunics',
+            'Peasant tops'
+          ],
+          bottoms: [
+            'Maxi skirts',
+            'Flared jeans',
+            'Palazzo pants',
+            'Printed shorts',
+            'Wrap skirts'
+          ],
+          shoes: [
+            'Ankle boots',
+            'Gladiator sandals',
+            'Espadrilles',
+            'Moccasins',
+            'Fringe boots'
+          ],
+          layers: [
+            'Kimono jackets',
+            'Fringe vests',
+            'Crochet cardigans',
+            'Embroidered jackets',
+            'Poncho wraps'
+          ],
+          accessories: [
+            'Statement necklaces',
+            'Layered bracelets',
+            'Fringe bags',
+            'Wide-brim hats',
+            'Feather earrings'
+          ],
+          tips: [
+            'Layer mixed prints',
+            'Add natural textures',
+            'Mix earthy tones',
+            'Include handcrafted pieces',
+            'Layer jewelry'
+          ],
+          inspiration: 'bohemian%20style'
+        };
+
+      case '30s':
+        return {
+          tops: [
+            'Bias-cut blouses',
+            'Puff sleeve tops',
+            'Fitted knit sweaters',
+            'Ruched detail tops',
+            'High-neck blouses'
+          ],
+          bottoms: [
+            'High-waisted wide-leg trousers',
+            'Midi skirts with pleats',
+            'Bias-cut silk skirts',
+            'A-line tea-length skirts',
+            'Evening gowns with draping'
+          ],
+          shoes: [
+            'T-strap heels',
+            'Oxford pumps',
+            'Round-toe leather shoes',
+            'Mary Jane heels',
+            'Evening dance shoes'
+          ],
+          layers: [
+            'Fur-trimmed coats',
+            'Fitted suit jackets',
+            'Long evening coats',
+            'Bolero jackets',
+            'Structured wool coats'
+          ],
+          accessories: [
+            'Long pearl necklaces',
+            'Art deco brooches',
+            'Cloche hats',
+            'Long evening gloves',
+            'Small structured handbags'
+          ],
+          tips: [
+            'Focus on feminine silhouettes',
+            'Embrace bias-cut fabrics',
+            'Add art deco accessories',
+            'Choose rich, luxurious materials',
+            'Layer delicate jewelry'
+          ],
+          inspiration: '1930s%20fashion'
+        };
+
+      // Keep the existing cases (baddie, y2k, cottagecore, etc.)
+      
       default:
         return {
           tops: [
-            'Classic White Tee',
-            'Fitted Tank Top',
-            'Button-Down Shirt'
+            'Classic white tee',
+            'Button-down shirt',
+            'Basic tank top',
+            'Fitted sweater',
+            'Simple blouse'
           ],
           bottoms: [
-            'High-Waisted Jeans',
-            'Black Leggings',
-            'Midi Skirt'
+            'Well-fitted jeans',
+            'Black trousers',
+            'Pencil skirt',
+            'Tailored shorts',
+            'A-line skirt'
           ],
           shoes: [
-            'White Sneakers',
-            'Ankle Boots',
-            'Ballet Flats'
+            'Classic sneakers',
+            'Black pumps',
+            'Ankle boots',
+            'Ballet flats',
+            'Loafers'
           ],
           layers: [
-            'Denim Jacket',
+            'Blazer',
             'Cardigan',
-            'Blazer'
+            'Denim jacket',
+            'Trench coat',
+            'Light sweater'
           ],
           accessories: [
-            'Versatile Tote Bag',
-            'Simple Necklace',
-            'Classic Watch',
-            'Leather Belt',
-            'Stud Earrings'
+            'Leather bag',
+            'Simple necklace',
+            'Classic watch',
+            'Leather belt',
+            'Stud earrings'
           ],
           tips: [
-            'Mix and match basics',
-            'Layer strategically',
-            'Choose versatile pieces',
+            'Invest in quality basics',
             'Focus on fit',
-            'Keep it balanced'
+            'Keep it simple',
+            'Choose versatile pieces',
+            'Build a capsule wardrobe'
           ],
-          inspiration: 'classic%20outfit%20ideas'
+          inspiration: 'classic%20style'
         };
     }
   }
@@ -1510,5 +1404,227 @@ export class AIService {
     response += `[Instagram ${recommendations.inspiration}](https://www.instagram.com/explore/tags/${recommendations.inspiration.replace(/%20/g, '')}/)\n`;
 
     return response;
+  }
+
+  private getHairstylesByAesthetic(aesthetic: string): HairRecommendations {
+    switch(aesthetic.toLowerCase()) {
+      case 'baddie':
+        return {
+          styles: [
+            'Sleek High Ponytail with Baby Hairs',
+            'Long Layered Extensions',
+            'Wet Look Bob',
+            'Braided Space Buns',
+            'Slicked Back Bun with Face-Framing Pieces'
+          ],
+          products: [
+            'Edge Control',
+            'Heat Protectant Spray',
+            'Shine Serum',
+            'Strong Hold Gel',
+            'Quality Hair Extensions'
+          ],
+          accessories: [
+            'Silk Scrunchies',
+            'Edge Brush',
+            'Hair Ties',
+            'Bobby Pins',
+            'Hair Clips'
+          ],
+          tips: [
+            'Master your baby hairs',
+            'Invest in quality extensions',
+            'Perfect the sleek look',
+            'Learn to do intricate braids'
+          ],
+          inspiration: 'baddie%20hairstyles'
+        };
+      case 'cottagecore':
+        return {
+          styles: [
+            'Romantic Braided Crown',
+            'Soft Loose Waves',
+            'Floral-Adorned Braids',
+            'Natural Curls with Accessories',
+            'Vintage-Inspired Pin Curls'
+          ],
+          products: [
+            'Sea Salt Spray',
+            'Light Hold Cream',
+            'Natural Bristle Brush',
+            'Heat Protectant',
+            'Shine Serum'
+          ],
+          accessories: [
+            'Fresh or Silk Flowers',
+            'Delicate Hair Ribbons',
+            'Pearl Hair Pins',
+            'Vintage Hair Combs',
+            'Lace Hair Bows'
+          ],
+          tips: [
+            'Master different braid styles',
+            'Use natural styling methods',
+            'Incorporate flowers and ribbons',
+            'Embrace your natural texture'
+          ],
+          inspiration: 'cottagecore%20hair'
+        };
+      case 'y2k':
+        return {
+          styles: [
+            'Space Buns with Face-Framing Pieces',
+            'Butterfly Clips Galore',
+            'Spiky Buns',
+            'Crimped Sections',
+            'Colorful Hair Extensions'
+          ],
+          products: [
+            'Hair Gems and Clips',
+            'Crimping Iron',
+            'Colorful Hair Extensions',
+            'Glitter Hair Gel',
+            'Fun Hair Accessories'
+          ],
+          accessories: [
+            'Butterfly Hair Clips',
+            'Colorful Snap Clips',
+            'Scrunchies',
+            'Mini Claw Clips',
+            'Hair Gems'
+          ],
+          tips: [
+            'Mix different hair accessories',
+            'Don\'t be afraid of color',
+            'Try fun updos',
+            'Experiment with temporary dyes'
+          ],
+          inspiration: 'y2k%20hairstyles'
+        };
+      case 'dark-academia':
+        return {
+          styles: [
+            'Low Chignon',
+            'Vintage-Inspired Waves',
+            'Sleek Low Bun',
+            'Classic French Twist',
+            'Sophisticated Ponytail'
+          ],
+          products: [
+            'Matte Pomade',
+            'Bobby Pins',
+            'Light Hold Hairspray',
+            'Silk Scrunchies',
+            'Classic Hair Clips'
+          ],
+          accessories: [
+            'Vintage Hair Combs',
+            'Silk Hair Ribbons',
+            'Classic Barrettes',
+            'Pearl Hair Pins',
+            'Velvet Hair Bows'
+          ],
+          tips: [
+            'Keep styles polished and neat',
+            'Use classic accessories',
+            'Focus on timeless looks',
+            'Master elegant updos'
+          ],
+          inspiration: 'dark%20academia%20hair'
+        };
+      case 'minimalist':
+        return {
+          styles: [
+            'Sleek Straight Bob',
+            'Clean Center Part',
+            'Simple Low Ponytail',
+            'Minimal Layers',
+            'Classic Blunt Cut'
+          ],
+          products: [
+            'Smoothing Serum',
+            'Light Hold Hairspray',
+            'Heat Protectant',
+            'Dry Shampoo',
+            'Shine Spray'
+          ],
+          accessories: [
+            'Simple Hair Clips',
+            'Basic Hair Ties',
+            'Minimal Barrettes',
+            'Thin Headbands',
+            'Classic Bobby Pins'
+          ],
+          tips: [
+            'Focus on healthy hair',
+            'Keep styling minimal',
+            'Use neutral accessories',
+            'Maintain clean lines'
+          ],
+          inspiration: 'minimal%20hairstyles'
+        };
+      case '30s':
+        return {
+          styles: [
+            'Finger waves',
+            'Pin curls',
+            'Marcel waves',
+            'Hollywood waves',
+            'Sleek bob with soft curls'
+          ],
+          products: [
+            'Setting lotion',
+            'Pin curl clips',
+            'Wave clips',
+            'Pomade',
+            'Heat protectant'
+          ],
+          accessories: [
+            'Art deco hair clips',
+            'Decorative combs',
+            'Feather accessories',
+            'Jeweled pins',
+            'Small elegant hats'
+          ],
+          tips: [
+            'Master the finger wave technique',
+            'Use pin curls for overnight styling',
+            'Keep waves close to the head',
+            'Focus on shine and sleekness'
+          ],
+          inspiration: '1930s%20hairstyles'
+        };
+      default:
+        return {
+          styles: [
+            'Classic Bob',
+            'Long Layers',
+            'Side-Swept Bangs',
+            'Sleek Straight',
+            'Natural Waves'
+          ],
+          products: [
+            'Heat Protectant',
+            'Volumizing Mousse',
+            'Light Hold Hairspray',
+            'Shine Serum',
+            'Dry Shampoo'
+          ],
+          accessories: [
+            'Classic Hair Clips',
+            'Simple Hair Ties',
+            'Basic Bobby Pins',
+            'Neutral Headbands',
+            'Minimal Scrunchies'
+          ],
+          tips: [
+            'Focus on healthy hair care',
+            'Keep styles polished',
+            'Use heat protection',
+            'Regular trims'
+          ],
+          inspiration: 'classic%20hairstyles'
+        };
+    }
   }
 }
