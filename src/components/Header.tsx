@@ -3,6 +3,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const Header = () => {
+  const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/quizzes', label: 'Quizzes' },
+    { href: '/chat', label: 'Chat' },
+    { href: '/guides/glam-makeup', label: 'Glam Guide' }
+  ];
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -14,15 +21,11 @@ const Header = () => {
         </Link>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/quizzes" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
-            Quizzes
-          </Link>
-          <Link href="/chat" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
-            Chat with AI
-          </Link>
-          <Link href="/guides/glam-makeup" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
-            Glam Guide
-          </Link>
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
+              {item.label}
+            </Link>
+          ))}
           <Link href="/reviews" className="text-slate-700 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-rose-500 hover:to-violet-500 transition-all">
             Makeup Remover
           </Link>
