@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll & Vote - GlowGirl.AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Slideshow Modal Overlay -->
+    <div id="poll-slideshow-modal" class="modal-overlay" style="display: flex;">
+        <button class="btn btn-secondary skip-modal">Skip</button>
+        <div class="modal-content">
+            <div class="slide" data-slide="1">
+                <h2>Welcome to Poll & Vote!</h2>
+                <p>We believe your voice matters. The Poll & Vote feature lets you share your opinion on trending topics and community questions.</p>
+                <button class="btn btn-primary next-slide">Next</button>
+            </div>
+            <div class="slide" data-slide="2">
+                <h2>Why is this here?</h2>
+                <p>Polls help us understand what matters most to our community. Your feedback shapes the future of GlowGirl.AI and helps us build features you love.</p>
+                <button class="btn btn-primary next-slide">Next</button>
+            </div>
+            <div class="slide" data-slide="3">
+                <h2>How can this help?</h2>
+                <p>By participating, you influence new features, content, and community initiatives. Together, we make GlowGirl.AI better for everyone!</p>
+                <button class="btn btn-primary get-started">Get Started</button>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <span>GlowGirl.AI</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#features" class="nav-link">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="poll-vote.html" class="nav-link">Poll & Vote</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#about" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+        <!-- Poll & Vote Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Poll & Vote</h1>
+                    <p class="hero-description">
+                        Participate in community polls and cast your vote!<br>
+                        (Poll and voting features coming soon.)
+                    </p>
+                    <form class="poll-submit-form" style="margin-top: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        <label for="poll-question" style="display:block; font-weight:500; margin-bottom:0.5rem;">Submit a Poll Question:</label>
+                        <textarea id="poll-question" name="poll-question" rows="3" placeholder="Type your poll question here..." style="width:100%; padding:12px; border:1px solid #ccc; border-radius:6px; font-size:1rem; resize:vertical;"></textarea>
+                        <button type="submit" class="btn btn-primary" style="margin-top:1rem; width:100%;">Send Poll</button>
+                    </form>
+                    <div style="text-align:center; margin-top: 2.5rem;">
+                        <div style="margin-bottom: 0.5rem; color: #555; font-size: 1.05rem;">Ready to see what others think? Cast your vote below!</div>
+                        <a href="#" class="btn btn-primary" style="min-width:140px;">Wanna Vote?</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span>GlowGirl.AI</span>
+                    </div>
+                    <p>Empowering beauty through artificial intelligence.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="poll-vote.html">Poll & Vote</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GlowGirl.AI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html> 
